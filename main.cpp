@@ -10,6 +10,7 @@
 #include <thread>
 #include <atomic>
 #include "offsets.h"
+#include <cstring>
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
