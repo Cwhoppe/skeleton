@@ -10,13 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
-
-      - name: Build
-        run: cmake --build build --config Release
+      - name: Compile C++
+        run: |
+          cl.exe main.cpp /EHsc /std:c++17 /O2 /Fe:skeleton.exe /link d3d11.lib dxgi.lib dwmapi.lib d3dcompiler.lib user32.lib gdi32.lib ole32.lib /SUBSYSTEM:WINDOWS /ENTRY:wWinMain
 
       - uses: actions/upload-artifact@v4
         with:
           name: exe
-          path: build/Release/*.exe
+          path: skeleton.exe
