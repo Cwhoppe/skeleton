@@ -14,8 +14,9 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1
 
       - name: Compile C++
+        shell: cmd
         run: |
-          cl.exe main.cpp /EHsc /std:c++17 /O2 /Fe:skeleton.exe /link d3d11.lib dxgi.lib dwmapi.lib d3dcompiler.lib user32.lib gdi32.lib ole32.lib /SUBSYSTEM:WINDOWS /ENTRY:wWinMain
+          cl.exe /EHsc /std:c++17 /O2 /MD /D UNICODE /D _UNICODE main.cpp /Fe:skeleton.exe /link d3d11.lib dxgi.lib dwmapi.lib d3dcompiler.lib user32.lib gdi32.lib ole32.lib /SUBSYSTEM:WINDOWS /ENTRY:wWinMain
 
       - uses: actions/upload-artifact@v4
         with:
